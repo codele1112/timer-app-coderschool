@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { formatTime } from "./components/formatTime";
+import "./App.css";
+import useTimer from "./components/useTimer";
 
 function App() {
+  const { time, handleStart, handleStop, handleReset } = useTimer(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Timekeeper</h1>
+      <div className="display">
+        <p>{formatTime(time)}</p>
+      </div>
+      <div className="btn-group">
+        <button className="btn green-btn" onClick={handleStart}>
+          Start
+        </button>
+        <button className="btn red-btn" onClick={handleStop}>
+          Stop
+        </button>
+        <button className="btn grey-btn" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
