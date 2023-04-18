@@ -2,8 +2,8 @@ import { formatTime } from "./components/formatTime";
 import "./App.css";
 import useTimer from "./components/useTimer";
 
-function App() {
-  const { time, handleStart, handleStop, handleReset } = useTimer(0);
+export function App() {
+  const { time, handleStart, handleStop, handleReset, active } = useTimer(0);
 
   return (
     <div className="App">
@@ -12,7 +12,7 @@ function App() {
         <p>{formatTime(time)}</p>
       </div>
       <div className="btn-group">
-        <button className="btn green-btn" onClick={handleStart}>
+        <button className="btn green-btn" ref={active} onClick={handleStart}>
           Start
         </button>
         <button className="btn red-btn" onClick={handleStop}>
@@ -26,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
